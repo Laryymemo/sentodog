@@ -4,12 +4,20 @@ mongoose.connect("mongodb://larrymemo:Calle13num1@ds263571.mlab.com:63571/sento-
 const Schema = mongoose.Schema,
       ObjectId = Schema.ObjectId;
 
-      const registroSchema = new Schema({
+      const registermanSchema = new Schema({
             id:ObjectId,
-            concesion:String,
-            placa:String,
-            taximetro:String,
-            status:String
+            nameuser:String,
+            password:String, 
+            email:String
       });
-var registro = mongoose.model('registro',registroSchema);
-module.exports = registro
+      const petSchema = new Schema({
+            id:ObjectId,
+            namepet:String,
+            iduser:String,
+            idunic:String
+      });
+
+var registerman = mongoose.model('registerman',petSchema);
+var regispet = mongoose.model('registerdog',petSchema);
+module.exports = registerman;
+module.exports = regispet;
