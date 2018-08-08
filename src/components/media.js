@@ -3,19 +3,12 @@ import './media.css';
 import PropTypes from 'prop-types';
 
 class Media extends Component {
+  imprimirtitle = (event) => {
+    console.log(this.props.title);
+  }
    render(){
-     const styles = {
-       container: {
-         fontSize: 14,
-         backgroundColor: 'black',
-         color: 'white',
-         cursor: 'pointer',
-         width: 260,
-         border: 'solid grey 2px'
-       }
-     }
      return(
-       <div className="Media">
+       <div className="Media" onClick={this.imprimirtitle}>
         <div>
           <img
            src={this.props.image}
@@ -31,7 +24,7 @@ class Media extends Component {
    }
 }
 Media.propTypes = {
-  image: PropTypes.string,
+  image: PropTypes.string.isRequired,
   title: PropTypes.string,
   author: PropTypes.string,
   type: PropTypes.oneOf(['video', 'audio']),

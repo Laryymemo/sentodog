@@ -1,54 +1,39 @@
-const express = require('express');
+import express from 'express';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import mongoose from 'mongoose';
+import User from './src/models/users'
+
 const app = express();
-const bodyParser = require('body-parser');
-const registerman = require('./server.js');
-const regispet = require('./server.js');
+const PORT = process.env.PORT || 3000
+const mongoURI = process.env.MONGODB_URI || "mongodb://larrymemo:Calle13num1@ds263571.mlab.com:63571/sento-dog"
+
+mongoose.connect(mongoURI,{ useNewUrlParser: true});
+const db = mongoose.connection;
+db.on('err',() => console.log("error en db"))
+  .once('open',() => console.log("conectado a db"))
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
-
-function validateEmail(email) {
-  var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
-  if (re==true) {
-  return email;
-  console.log("correcto");
- }
-  else {
-    return alert("Correo no valido");
-    console.log("incorrecto");
-  }
-}
-
-//create register User man
-
-app.post("/api/v1/registro/usuario/",(req,res) => {
-    const {nameuser,password,email} = req.body
-    let newRegisterman = registerman({
-    nameuser:nameuser,
-    password:password,
-    email:email
-  })
-   validateEmail(email);
-   newRegisterman.save((err,registerman)=>{
-     if(err) throw err;
-     res.send(registerman);
-     console.log("user create");
- })
-});
-//Create register Pet
-app.post("/api/v1/registrar/mascota/",(req,res) => {
-  const {namepet,iduser,idunic} = req.body
-  let newRegispet = regispet({
-    namepet:namepet,
-    iduser:iduser,
-    idunic:idunic
-  })
-   newRegispet.save((err,regispet) => {
-     if(err) throw err;
-     res.send(regispet)
- })
+app.use(cors())
+app.get('/',(req,res)=>{
+  res.send('server run')
 });
 
-app.listen(8000,()=>{
-  console.log("server corriendo en el puerto 8000")
+app.post('/user/create',(req,res) => {
+  let user = req.body
+  User.create(user)
+      .then(user => {
+          return res.status(201).json(
+            {message:"usuario creado",
+             id:user._id}
+          )
+      })
+      .catch(err => {
+          console.log(err)
+          return res.status(400).json(err)
+      })
+})
+app.listen(PORT,() => {
+  console.log("server corriendo en el puerto "+ PORT)
 });
