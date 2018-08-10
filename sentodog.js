@@ -3,6 +3,9 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import User from './src/models/users'
+import Pet from './src/models/pets'
+import graphQLHTTP from 'express-graphql';
+import schema from './src/graphql';
 
 const app = express();
 const PORT = process.env.PORT || 3000
@@ -34,6 +37,28 @@ app.post('/user/create',(req,res) => {
           return res.status(400).json(err)
       })
 })
+
+app.post('/pet/create',(req,res) => {
+  let pet = req.body
+  Pet.create(pet)
+      .then(pet => {
+          return res.status(201).json(
+            {message:"mascota creada",
+             id:pet._id}
+          )
+      })
+      .catch(err => {
+          console.log(err)
+          return res.status(400).json(err)
+      })
+})
+
+app.use('/graphql',graphQLHTTP((req,res) => ({
+   schema,
+   graphiql:true,
+   pretty:true
+})));
+
 app.listen(PORT,() => {
   console.log("server corriendo en el puerto "+ PORT)
 });
