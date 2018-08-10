@@ -3,17 +3,26 @@ import './media.css';
 import PropTypes from 'prop-types';
 
 class Media extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+       author: props.author
+    }
+  }
   imprimirtitle = (event) => {
-    console.log(this.props.title);
+  //  console.log(this.props.title);
+  this.setState({
+    author: "The best app for pets"
+  })
   }
    render(){
      return(
        <div className="Media" onClick={this.imprimirtitle}>
         <div>
           <img
-           src={this.props.image}
+           src={this.props.cover}
            alt=""
-           width="260"
+           width="240"
            height="160"
           />
           <h3>{this.props.title}</h3>
@@ -24,7 +33,7 @@ class Media extends Component {
    }
 }
 Media.propTypes = {
-  image: PropTypes.string.isRequired,
+  cover: PropTypes.string,
   title: PropTypes.string,
   author: PropTypes.string,
   type: PropTypes.oneOf(['video', 'audio']),
