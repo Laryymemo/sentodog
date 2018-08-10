@@ -21,6 +21,10 @@ const UserSchema = new Schema({
   "telefono":{
     type: Number,
     require: true
+  },
+  "foto":{
+    type:String,
+    default:"https://c1.staticflickr.com/9/8149/7694193900_3d268cfc80.jpg"
   }
 },{collection:"Users", timestamps: true})
 

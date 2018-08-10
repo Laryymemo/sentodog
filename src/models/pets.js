@@ -19,6 +19,10 @@ const PetSchema = new Schema({
   "genero":{
     type: String,
     require: true
+  },
+  "foto":{
+    type:String,
+    default:"https://api.netnoticias.mx/im/2017/06/03/770x490-V67XCIIWqoBqY.jpg"
   }
 },{collection:"Pets",timestamps:true})
 
