@@ -15,6 +15,9 @@ export const PetType = new GraphQLObjectType({
     _id:{
       type:GraphQLNonNull(GraphQLID)
         },
+    nombre:{
+      type: GraphQLString
+    },
     id_dispositivo:{
       type: GraphQLString
     },

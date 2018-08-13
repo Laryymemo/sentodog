@@ -1,9 +1,10 @@
 .Media {
-  color: black;
+  margin-top: 5px;
+  color: white;
   cursor: pointer;
   margin-right: 15px;
   display: inline-block;
   width: 240px;
   vertical-align: top;
-  background-color: white;
+  background-color: #581845;
 }
