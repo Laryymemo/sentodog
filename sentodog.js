@@ -2,8 +2,9 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import mongoose from 'mongoose';
-import User from './src/models/users'
-import Pet from './src/models/pets'
+import User from './src/models/users';
+import Pet from './src/models/pets';
+import Especificacion from './src/models/especificaciones'
 import graphQLHTTP from 'express-graphql';
 import schema from './src/graphql';
 
@@ -20,7 +21,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 app.use(cors())
 app.get('/',(req,res)=>{
-  res.send('server run')
+  res.send('Ya se prendio esta mierda :v')
 });
 
 app.post('/user/create',(req,res) => {
@@ -45,6 +46,21 @@ app.post('/pet/create',(req,res) => {
           return res.status(201).json(
             {message:"mascota creada",
              id:pet._id}
+          )
+      })
+      .catch(err => {
+          console.log(err)
+          return res.status(400).json(err)
+      })
+})
+
+app.post('/pet/especificacion',(req,res) => {
+  let especificacion = req.body
+  Especificacion.create(especificacion)
+      .then(especificacion => {
+          return res.status(201).json(
+            {message:"Especificacion asignada",
+             id:especificacion._id}
           )
       })
       .catch(err => {

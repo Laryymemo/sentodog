@@ -7,8 +7,10 @@ font-size: 16px;
 font-family: 'Roboto', sans-serif;
 }
 body {
-background: #d1d1d1;
-}
+  width:500%;margin:auto;min-width:600px;max-width:2000px;
+  background-color: #C70039;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;}
 .checkbox {
 display: none;
 }

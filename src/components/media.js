@@ -10,7 +10,6 @@ class Media extends Component {
     }
   }
   imprimirtitle = (event) => {
-  //  console.log(this.props.title);
   this.setState({
     author: "The best app for pets"
   })
