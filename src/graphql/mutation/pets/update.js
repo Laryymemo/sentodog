@@ -4,7 +4,7 @@ import {
 } from 'graphql'
 
 import Pet from '../../../models/pets'
-import {PetType,PetType} from '../../types/pets'
+import {PetType,PetInputType} from '../../types/pets'
 
 export default {
     type: PetType,
