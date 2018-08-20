@@ -2,7 +2,8 @@ import {
     GraphQLObjectType,
     GraphQLString,
     GraphQLID,
-    GraphQLNonNull
+    GraphQLNonNull,
+    GraphQLInputObjectType
 } from 'graphql'
 
 import {PetType} from './pets'
@@ -32,4 +33,23 @@ export const EspecificacionType = new GraphQLObjectType({
       type:GraphQLString
     }
  })
+})
+
+export const EspecificacionInputType = new GraphQLInputObjectType({
+  name:"addEspecificaciones",
+  description:"agrega especificaciones a la base de datos",
+  fields: () => ({
+    description:{
+      type:GraphQLString
+    },
+    date:{
+      type: GraphQLString
+    },
+    pet:{
+      type: GraphQLNonNull(GraphQLID)
+    },
+    importancia:{
+      type:GraphQLString
+    }
+  })
 })

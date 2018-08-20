@@ -2,7 +2,8 @@ import {
     GraphQLObjectType,
     GraphQLString,
     GraphQLID,
-    GraphQLNonNull
+    GraphQLNonNull,
+    GraphQLInputObjectType
 } from 'graphql'
 
 import {UserType} from './users'
@@ -32,4 +33,23 @@ export const PetType = new GraphQLObjectType({
       type:GraphQLString
     }
  })
+})
+
+export const PetInputType = new GraphQLInputObjectType({
+  name: "addPets on db",
+  description:"agregar mascotas a la data base",
+  fields: () => ({
+    nombre:{
+      type:GraphQLString
+    },
+    id_dispositivo:{
+      type:GraphQLString
+    },
+    user:{
+      type: GraphQLNonNull(GraphQLID)
+    },
+    genero:{
+      type: GraphQLString
+    }
+  })
 })
