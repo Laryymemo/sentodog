@@ -69,6 +69,16 @@ app.post('/pet/especificacion',(req,res) => {
       })
 })
 
+app.post('/login',(req,res) =>{
+    const token = createToken(req.body.username,req.body.password)
+        .then(token => {
+            res.status(201).json({token})
+        })
+        .catch(() => {
+            res.status(403).json({message:'Login Failed :('})
+        })
+});
+
 app.use('/graphql',graphQLHTTP((req,res) => ({
    schema,
    graphiql:true,

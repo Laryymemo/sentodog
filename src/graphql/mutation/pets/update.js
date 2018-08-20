@@ -15,7 +15,7 @@ export default {
         },
         data:{
             name:'data',
-            type: new GraphQLNonNull(PetType)
+            type: new GraphQLNonNull(PetInputType)
         }
     },
     resolve(root,params){

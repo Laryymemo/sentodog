@@ -36,7 +36,7 @@ export const PetType = new GraphQLObjectType({
 })
 
 export const PetInputType = new GraphQLInputObjectType({
-  name: "addPets on db",
+  name: "addPets",
   description:"agregar mascotas a la data base",
   fields: () => ({
     nombre:{
