@@ -1,0 +1,75 @@
+body{
+  height: 900px;
+  background-color: #C70039;
+  background-image: url(https://cdn.icon-icons.com/icons2/644/PNG/512/green_pets_icon-icons.com_59415.png);
+  background-repeat: no-repeat;
+  background-position: left;
+}
+#uno{
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+#titulo{
+  color:  #000000;
+  font-size: 50px;
+  font-family: monospace;
+  text-align: center;
+}
+#flecha{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#icono{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+input{
+  font-size: 45px;
+  height: 50px;
+  width:  300px;
+  color: #000000;
+  background-color: #581845;
+  border : 1PX #0000 solid;
+}
+.inp{
+  font-size: 30px;
+  font-family: monospace;
+  color: #000000;
+  padding-top: 10px;
+text-align: center;
+  padding-top: 10px;
+}
+#tres{
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#boton{
+  font-size: 25px;
+  font-family: monospace;
+  height: 50px;
+  width: 100px;
+  color: white;
+  border-radius: 10%;
+  background-color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#boton:hover{
+  background-color:black;
+}
+#ini{
+  font-family: monospace;
+  text-decoration: none;
+  color: #000000;
+}
+#correo{
+  font-size: 20px;
+}
