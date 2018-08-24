@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken'
 import User from '../models/users'
 
-const secret = 'ejemplo'
+const secret = 'ejemplodeairbn'
 const expiresIn = '1y'
 
 export const createToken = (name,password) => {
@@ -19,7 +19,7 @@ export const createToken = (name,password) => {
                     console.log(isMatch)
                     if (isMatch){
                         let payload = {
-                            username:user.name,
+                            name:user.name,
                             id:user._id
                         }
                         const token = jwt.sign(payload,secret,{expiresIn})

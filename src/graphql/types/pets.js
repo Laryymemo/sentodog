@@ -31,6 +31,9 @@ export const PetType = new GraphQLObjectType({
     },
     genero:{
       type:GraphQLString
+    },
+    foto:{
+      type: GraphQLString
     }
  })
 })

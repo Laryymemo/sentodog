@@ -10,7 +10,6 @@ export const verifyToken = (token) => {
     let user = null
     if(!receivedToken){
         throw new Error('No token')
-        console.log(err);
     }
     if(prefix != tokenPrefix){
         throw new Error('Header Invalido')

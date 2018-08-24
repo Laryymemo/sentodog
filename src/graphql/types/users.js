@@ -23,6 +23,9 @@ export const UserType = new GraphQLObjectType({
     },
     telefono:{
       type: GraphQLString
+    },
+    foto:{
+      type: GraphQLString
     }
   })
 })
