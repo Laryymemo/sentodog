@@ -77,7 +77,7 @@ app.post('/login',(req,res) => {
             res.status(201).json({token})
         })
         .catch(() => {
-            res.status(403).json({message:'Login Failed :('})
+            res.status(403).json({message:'Login Failed'})
         })
 });
 
